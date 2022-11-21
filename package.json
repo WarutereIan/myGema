@@ -1,0 +1,27 @@
+{
+  "name": "gema_project",
+  "version": "1.0.0",
+  "private": true,
+  "license": "(MIT AND Apache-2.0)",
+  "scripts": {
+    "deps-install": "yarn",
+    "s:deploy": "yarn workspace scripts deploy",
+    "s:initialize": "yarn workspace scripts initialize",
+    "s:mint": "yarn workspace scripts mint",
+    "server": "yarn workspace backend start",
+    "test": "yarn workspace backend test"
+  },
+  "devDependencies": {
+    "near-cli": "^3.3.0"
+  },
+  "workspaces": {
+    "packages": [
+      "backend",
+      "scripts"
+    ],
+    "nohoist": [
+      "backend/*",
+      "scripts/*"
+    ]
+  }
+}
