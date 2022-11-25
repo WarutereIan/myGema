@@ -10,6 +10,6 @@ describe('Generate OTP', () => {
 
     it('the OTP should only be of type numbers', async () => {
         // Use regex to check whether the OTP only contains digits
-        expect(/^[0-9]+$/.test(otp)).toBeTruthy()
+        expect(/^\d+$/.test(otp)).toBeTruthy()
     })
 })
