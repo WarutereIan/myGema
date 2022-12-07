@@ -6,6 +6,7 @@ import { configureMiddleware } from './middlewares'
 import cluster from 'cluster'
 import { cpus } from 'os'
 
+console.log('k')
 // Connect and get reference to db
 let db: any
 ;(async () => {
@@ -47,3 +48,5 @@ if (cluster.isPrimary) {
         )
     })
 }
+
+export { app }
