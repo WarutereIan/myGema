@@ -1,12 +1,11 @@
 export type ReceiptItem = {
-    item_id: string
     name: string
     count: number
     unit_price: number
     total: number
 }
 
-export type AmountSummarty = {
+export type AmountSummary = {
     sub_total: number
     vat_pct: number
     vat_amount: number
@@ -24,6 +23,6 @@ export interface IReceipts {
     account_id: string
     store_name: string
     items: ReceiptItem[]
-    amount: AmountSummarty
+    amount: string
     gema_points: Points
 }

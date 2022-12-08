@@ -5,8 +5,8 @@ import { configureRoutes } from './routes'
 import { configureMiddleware } from './middlewares'
 import cluster from 'cluster'
 import { cpus } from 'os'
+import { createNewReceipt } from './controllers/receipts'
 
-console.log('k')
 // Connect and get reference to db
 let db: any
 ;(async () => {

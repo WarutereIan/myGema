@@ -6,6 +6,7 @@ export const configureRoutes = (app: Application) => {
     app.use('/api/v1/brands', require('./api/brands'))
     app.use('/api/v1/notifications', require('./api/notifications'))
     app.use('/api/v1/otp', require('./api/otp'))
+    app.use('/api/v1/receipts', require('./api/receipts'))
 
     // Health Check Endpoint
     app.use('/api/v1/status', (req, res) => {

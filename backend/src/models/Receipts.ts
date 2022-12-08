@@ -17,6 +17,7 @@ const ReceiptSchema = new Schema<IReceipts, ReceiptModel, IReceiptMethods>(
         receipt_number: {
             type: String,
             required: true,
+            unique: true,
         },
         transaction_id: {
             type: String,
@@ -33,7 +34,7 @@ const ReceiptSchema = new Schema<IReceipts, ReceiptModel, IReceiptMethods>(
         items: {
             type: [
                 {
-                    item_id: String,
+                    id: String,
                     name: String,
                     count: Number,
                     unit_price: Number,
@@ -43,12 +44,14 @@ const ReceiptSchema = new Schema<IReceipts, ReceiptModel, IReceiptMethods>(
             default: [],
         },
         amount: {
-            type: {
-                sub_total: Number,
-                vat_pct: Number,
-                vat_amount: Number,
-                total: Number,
-            },
+            // type: {
+            //     sub_total: Number,
+            //     vat_pct: Number,
+            //     vat_amount: Number,
+            //     total: Number,
+            // },
+            type: String,
+            required: true,
         },
         gema_points: {
             type: {
@@ -60,9 +63,11 @@ const ReceiptSchema = new Schema<IReceipts, ReceiptModel, IReceiptMethods>(
     {
         toJSON: {
             virtuals: true,
-            transform(doc, ret) {
+            transform(doc, ret, i) {
                 ret.id = ret._id
                 delete ret._id
+
+                delete ret.gema_points._id
             },
             versionKey: false,
         },
@@ -75,3 +80,5 @@ ReceiptSchema.statics.createReceipt = (params: IReceipts) => {
 }
 
 const Receipt = model<IReceipts>('Receipt', ReceiptSchema)
+
+export { Receipt }
