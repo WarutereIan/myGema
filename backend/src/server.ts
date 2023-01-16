@@ -14,10 +14,11 @@ let db: any
     db = await connectDB()
 })()
 
+
 //read in certificates
 
-let key = fs.readFileSync('/etc/letsencrypt/live/api.gemaloyalty.io/privkey.pem')
-let cert = fs.readFileSync('/etc/letsencrypt/live/api.gemaloyalty.io/cert.pem')
+let key = fs.readFileSync(__dirname +'/privkey.pem')
+let cert = fs.readFileSync(__dirname + '/cert.pem')
 
 var options = {
     key: key,
