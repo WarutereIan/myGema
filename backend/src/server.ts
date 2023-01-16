@@ -1,5 +1,6 @@
 import express from 'express'
-import { createServer } from 'https'
+//import { createServer } from 'https'
+import { createServer } from 'http'
 import { config, connectDB } from './config'
 import { configureRoutes } from './routes'
 import { configureMiddleware } from './middlewares'
@@ -16,7 +17,7 @@ let db: any
 
 
 //read in certificates
-
+/*
 let key = fs.readFileSync(__dirname +'/privkey.pem')
 let cert = fs.readFileSync(__dirname + '/fullchain.pem')
 
@@ -24,7 +25,7 @@ var options = {
     key: key,
     cert: cert
 }
-
+*/
 // Init express app
 const app = express()
 
@@ -35,7 +36,7 @@ configureMiddleware(app)
 configureRoutes(app)
 
 // Start server and listen for connections
-const httpsServer = createServer(options,app)
+const httpServer = createServer(app)
 
 // Get number of CPUs
 const numCPUs = cpus().length
@@ -52,10 +53,10 @@ if (cluster.isPrimary) {
         cluster.fork()
     })
 } else {
-    httpsServer.listen(config.PORT || 5000, () => {
+    httpServer.listen(config.PORT || 5000, () => {
         console.info(
             `GEMA \`/api/v1/\` Server started on `,
-            httpsServer.address(),
+            httpServer.address(),
             `PID ${process.pid}\n`
         )
     })
