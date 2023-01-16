@@ -16,8 +16,8 @@ let db: any
 
 //read in certificates
 
-let key = fs.readFileSync('/home/iandev/selfsigned.key')
-let cert = fs.readFileSync('/home/iandev/selfsigned.crt')
+let key = fs.readFileSync('/etc/letsencrypt/live/api.gemaloyalty.io/privkey.pem')
+let cert = fs.readFileSync('/etc/letsencrypt/live/api.gemaloyalty.io/cert.pem')
 
 var options = {
     key: key,
