@@ -18,7 +18,7 @@ let db: any
 //read in certificates
 
 let key = fs.readFileSync(__dirname +'/privkey.pem')
-let cert = fs.readFileSync(__dirname + '/cert.pem')
+let cert = fs.readFileSync(__dirname + '/fullchain.pem')
 
 var options = {
     key: key,
